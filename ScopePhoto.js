@@ -4,30 +4,64 @@
   //CurrentPhoto() shows the current photo index
   //use the "this" element
   //*********'var' = possible global element, use 'let' instead*****
-  let slideshow = {
-       photoList: ['photo1', 'photo2', 'photo3'],
-       currentPhotoIndex: 0,
-       
-       nextPhoto: function() {
-       	if (this.currentPhotoIndex < this.photoList.length) {
-       		return this.currentPhotoIndex[this.currentPhotoIndex]
-       		this.currentPhotoIndex++; //cycles through index
+var slideshow = {
+	show: ["p1", "p2", "p3", "p4", "p5"],
+	slideIndex: [0],
+	cycleThru: function() 
+	{
+		if (this.slideIndex < this.show.length) {
+       		return this.slideIndex[this.slideIndex]
+       		this.slideIndex++; //cycles through index
        	} else {				//after last index, prints 'end slideshow'
        		console.log('end slideshow');
-     }
-   },
-     
+	  }
+	 
+	},
 
-
-      prevPhoto: function() {
-       	if (this.currentPhotoIndex > 0) {
-       		return this.currentPhotoIndex[this.currentPhotoIndex]
-       		this.currentPhotoIndex--;//cycles index in reverse
-       	} else {  //print 'end slide' after last index
+	play: function()
+	{
+		if (this.slideIndex < this.show.length) {
+       		return this.slideIndex[this.slideIndex]
+       		this.slideIndex++; //cycles through index
+       	} else {				//after last index, prints 'end slideshow'
        		console.log('end slideshow');
-     }
-   },
-  	  CurrentPhoto: function(){
-  	  	return photoList[this.currentPhotoIndex] //prints the current index
-   },
- }
+	  }
+	 
+	},
+	autoPlay: function()
+	{	
+		setInterval(autoPlay, 2000);
+		if (this.slideIndex < this.show.length) {
+       		return this.slideIndex[this.slideIndex]
+       		this.slideIndex++; //cycles through index
+       	} else {				//after last index, prints 'end slideshow'
+       		console.log('end slideshow');
+	  }
+	},
+	previousSlide: function()
+	{
+		if (this.slideIndex > this.show.length) {
+       		return this.slideIndex[this.slideIndex]
+       		this.slideIndex--; //cycles through index
+       	} else {				//after last index, prints 'end slideshow'
+       		console.log('end slideshow');
+	  }
+	 
+	},
+	pauseSlide: function()
+	{	
+		clearInterval(this.slideIndex);
+ 		console.log('PAUSE');
+ 		console.log(this.slideIndex);
+	}
+
+}
+//console.log(slideshow);
+console.log(slideshow.play);
+console.log(slideshow.cycleThru);
+console.log(slideshow.autoPlay);
+console.log(slideshow.pauseSlide);
+console.log(slideshow.previousSlide);
+slideshow.play();
+slideshow.autoPlay();
+slideshow.previousSlide();
